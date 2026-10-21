@@ -40,8 +40,8 @@ public class StockMarketMain {
 
     private static void printResults(PipelineBasket resultBasket) {
         // Ergebnisse aus der Softmax-Schicht auslesen
-        double probabilityFallend = resultBasket.getPredictionOutput().getDouble(new int[]{0, 0, 0});
-        double probabilitySteigend = resultBasket.getPredictionOutput().getDouble(new int[]{0, 1, 0});
+        double probabilityFallend = resultBasket.getPredictionOutput().getDouble(0, 0, 0);
+        double probabilitySteigend = resultBasket.getPredictionOutput().getDouble(0, 1, 0);
 
         System.out.println("=== VORHERSEHUNG FUER DEN NAECHSTEN HANDELSTAG ===");
         System.out.format("Wahrscheinlichkeit, dass %s FAELLT: %.2f%%\n", resultBasket.getBarSeries().getName(),

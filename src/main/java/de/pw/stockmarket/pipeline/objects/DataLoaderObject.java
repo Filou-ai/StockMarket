@@ -10,7 +10,7 @@ import java.util.Properties;
 
 public class DataLoaderObject extends AbstractPipelineObject implements IPipelineObjeckt {
 
-    private Properties loaderProperties;
+    private final Properties loaderProperties;
 
     public DataLoaderObject(Properties loaderProps) {
         super();

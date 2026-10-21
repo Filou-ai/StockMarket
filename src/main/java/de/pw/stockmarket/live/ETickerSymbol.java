@@ -8,7 +8,7 @@ public enum ETickerSymbol {
     AIR_LIQUIDE("AIQUF"),
     AIRBUS("EADSF");
 
-    private String ticker;
+    private final String ticker;
 
     ETickerSymbol(String ticker) {
         this.ticker = ticker;

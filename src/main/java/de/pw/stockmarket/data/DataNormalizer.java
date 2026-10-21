@@ -6,12 +6,11 @@ import org.nd4j.linalg.dataset.api.preprocessor.NormalizerMinMaxScaler;
 
 public class DataNormalizer {
 
-    public static DataNormalization normalizeData(DataSet trainData, DataSet evaluateData) {
+    public static DataNormalization normalizeData(DataSet trainData) {
         DataNormalization normalizer = new NormalizerMinMaxScaler(0, 1);
         normalizer.fit(trainData);
 
         normalizer.transform(trainData);
-       // normalizer.transform(evaluateData);
         return normalizer;
     }
 }

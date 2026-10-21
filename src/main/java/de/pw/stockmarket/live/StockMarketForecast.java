@@ -5,14 +5,13 @@ import org.deeplearning4j.nn.multilayer.MultiLayerNetwork;
 import org.nd4j.linalg.api.ndarray.INDArray;
 import org.nd4j.linalg.dataset.api.preprocessor.DataNormalization;
 import org.nd4j.linalg.factory.Nd4j;
-import org.ta4j.core.BarSeries;
 
 public class StockMarketForecast {
 
     public static INDArray foreCast(MultiLayerNetwork net,
                                 int lastIndex,
                                 DataNormalization normalizer) {
-        INDArray liveFeatures = Nd4j.create(new int[]{1, DataPreparator.getNumFeatures(), 1}); // 1 einzelner Zeitschritt
+        INDArray liveFeatures = Nd4j.create(1, DataPreparator.getNumFeatures(), 1); // 1 einzelner Zeitschritt
 
         liveFeatures.putScalar(new int[]{0, 0, 0}, DataPreparator.getClosePrice().getValue(lastIndex).doubleValue());
         liveFeatures.putScalar(new int[]{0, 1, 0}, DataPreparator.getRsi().getValue(lastIndex).doubleValue());

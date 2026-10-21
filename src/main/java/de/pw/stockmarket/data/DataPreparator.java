@@ -11,7 +11,6 @@ import org.ta4j.core.indicators.bollinger.BollingerBandsMiddleIndicator;
 import org.ta4j.core.indicators.bollinger.BollingerBandsUpperIndicator;
 import org.ta4j.core.indicators.helpers.ClosePriceIndicator;
 import org.ta4j.core.indicators.helpers.CombineIndicator;
-import org.ta4j.core.indicators.helpers.DifferencePercentageIndicator;
 
 public class DataPreparator {
 
@@ -65,7 +64,7 @@ public class DataPreparator {
         }
 
         // DL4J 3D-Format für RNNs: [Batchsize, Features, Zeitachse/Timesteps]
-        INDArray featuresMat = Nd4j.create(new int[]{1, numFeatures, trainTimesteps});
+        INDArray featuresMat = Nd4j.create(1, numFeatures, trainTimesteps);
         INDArray labelMat = Nd4j.create(1, numOutputs, trainTimesteps);
 
         for(int i = 0; i < trainTimesteps; i++) {
@@ -128,8 +127,8 @@ public class DataPreparator {
         int trainTimesteps = series.getBarCount() - 1;
 
         // DL4J 3D-Format für RNNs: [Batchsize, Features, Zeitachse/Timesteps]
-        INDArray featuresMat = Nd4j.create(new int[]{1, numFeatures, trainTimesteps});
-        INDArray labelMat = Nd4j.create(new int[]{1, numOutputs, trainTimesteps});
+        INDArray featuresMat = Nd4j.create(1, numFeatures, trainTimesteps);
+        INDArray labelMat = Nd4j.create(1, numOutputs, trainTimesteps);
 
         for(int i = 0; i < trainTimesteps; i++) {
             // features befüllen
@@ -164,10 +163,6 @@ public class DataPreparator {
 
     public static SMAIndicator getSma() {
         return fastSma;
-    }
-
-    public static SMAIndicator getSlowSma() {
-        return slowSma;
     }
 
     public static CombineIndicator getSmaDistanceFeature() {

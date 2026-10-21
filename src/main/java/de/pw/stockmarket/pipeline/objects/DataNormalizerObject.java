@@ -14,7 +14,7 @@ public class DataNormalizerObject extends AbstractPipelineObject implements IPip
     @Override
     public PipelineBasket execute() {
         System.out.println("3. Normalisiere Daten auf den Wertebereich [0.0, 1.0]...");
-        DataNormalization normalizer = DataNormalizer.normalizeData(getBasket().getTrainDataSet(), getBasket().getEvaluateDataSet());
+        DataNormalization normalizer = DataNormalizer.normalizeData(getBasket().getTrainDataSet());
         getBasket().setNormalizer(normalizer);
         System.out.println("-> Normalisierung abgeschlosen");
         return getBasket();
