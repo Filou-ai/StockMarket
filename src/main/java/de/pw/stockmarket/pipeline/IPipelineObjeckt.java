@@ -1,6 +1,6 @@
 package de.pw.stockmarket.pipeline;
 
 public interface IPipelineObjeckt {
-    public void initialize(PipelineBasket basket);
-    public PipelineBasket execute();
+    void initialize(PipelineBasket basket);
+    PipelineBasket execute();
 }
